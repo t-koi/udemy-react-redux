@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 
 // class App extends Component {
 //   render(){
@@ -35,6 +36,11 @@ const Cat = (props) => {
  
 Cat.defaultProps = {
   age: 1
+}
+
+Cat.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
 }
 export default App;
  
