@@ -1,46 +1,39 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import { current } from 'immer';
+import React, {Component} from 'react';
 
-// class App extends Component {
-//   render(){
-//     const str = "hi tmo";
-//     const dom = 
-//         <React.Fragment>
-//           <label htmlFor="bar">bar</label>
-//           <input type="text" onClick={()=> {console.log("click")} }/>
-//         </ React.Fragment>
-//     return dom ;
-//   }
-// };
 
-const App = () => {
-  const profiles = [
-    {name: "Tabo", age: 10},
-    {name: "nama", age: 222},
-    {name: "taka"}
-  ]
-  return (
-    <div> 
-      {
-        profiles.map((profile, index) => {
-          return <Cat name={profile.name} age={profile.age} key={index} />
-        })
-      }
-    </div>
+const App = () => 
+  (
+    <Counter></Counter>
   )
+
+class Counter extends Component {
+  constructor(props){
+    super(props)
+    console.log(this.state)
+    this.state = { count: 0 } 
+  }
+
+  handlePlusButton= ()=> {
+    this.setState({ count: this.state.count + 1})
+    console.log(this.state.count)
+  }
+
+  handleMButton= ()=> {
+    this.setState({ count: this.state.count - 1})
+    console.log(this.state.count)
+  }
+
+  render() {
+    return (
+    <React.Fragment>
+      <div>count: {this.state.count}</div>
+      <button onClick={this.handlePlusButton}>+1</button>
+      <button onClick={this.handleMButton}>-1</button>
+    </React.Fragment>
+    )
+  }
 }
 
-const Cat = (props) => {
-  return <div>i am a {props.name}, age is {props.age}</div>
-}
- 
-Cat.defaultProps = {
-  age: 1
-}
-
-Cat.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired
-}
 export default App;
  
